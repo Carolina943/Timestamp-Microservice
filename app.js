@@ -23,7 +23,6 @@ app.get('/api/UnixTime', function(req, res, next) {
   res.json({"unix": req.time});
 });
 
-
 app.get('/api/ClockUTC', function(req, res, next) {
   utc.Date = new Date().toString(); 
   next();
@@ -31,7 +30,7 @@ app.get('/api/ClockUTC', function(req, res, next) {
   res.json({"utc": utc.Date});
 });
 
-app.get( '/', function(req,res){
+app.get( '/api/TimeStamp', function(req,res){
   let date = new Date();
   res.json({unix: date.valueOf(), utc: date.toUTCString()})
  
