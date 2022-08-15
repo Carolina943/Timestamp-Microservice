@@ -5,6 +5,7 @@ const app = express();
 
 
 const cors = require('cors');
+const { utc } = require('time-stamp');
 app.use(cors({optionsSuccessStatus: 200}));
 
 
@@ -22,12 +23,20 @@ app.get('/api/UnixTime', function(req, res, next) {
   res.json({"unix": req.time});
 });
 
-
+/*
 app.get('/api/UnixClock', function(req, res, next) {
-  req.time = new Date().toString();  
+  req.time = new Date().toString(); 
   next();
 }, function(req, res) {
   res.json({"unix": req.time});
+});
+*/
+
+app.get('/api/UnixClock', function(req, res, next) {
+  utc.Date = new Date().toString(); 
+  next();
+}, function(req, res) {
+  res.json({"utc": utc.Date});
 });
 
 
